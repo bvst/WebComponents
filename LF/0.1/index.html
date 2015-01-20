@@ -5,23 +5,44 @@
 		<title>Cibers contact app!</title>
 	</head>
 	<body>
-		<div on-click="toggleDetails()" class="contact-header">
-			<h2>Morten Kjelling</h2>
-			<img src="../../images/morten.png" alt="Mortens profilbilde"/>
-			<p class="detailed-info hidden">Systemutvikler</p>
+		<div id="logo"> 
+			<img src="../../images/ciber_logo.png" alt="Logo">
 		</div>
-		<div on-click="toggleDetails()" class="contact-header">
-			<h2>Bjørn Vegard Thoresen</h2>
-			<img src="../../images/bv.png" alt="Bjørn Vegard profilbilde"/>
-			<p class="detailed-info hidden">Systemutvikler</p>
+		<div class="contact-wrapper">
+			<div onclick="toggleDetails(1)" class="contact-header">
+				<h2>Morten Kjelling</h2>
+				<img src="../../images/morten.png" alt="Mortens profilbilde"/>
+			</div>
+			<p id="details1" class="detailed-info hidden">Systemutvikler</p>
 		</div>
-		<div on-click="toggleDetails()" class="contact-header">
-			<h2>Alexander Perry</h2>
-			<img src="../../images/perry.png" alt="Perrys profilbilde"/>
-			<p class="detailed-info hidden">Systemutvikler</p>
+		<div class="contact-wrapper">
+			<div onclick="toggleDetails(2)" class="contact-header">
+				<h2>Bjørn Vegard Thoresen</h2>
+				<img src="../../images/bv.png" alt="Bjørn Vegard profilbilde"/>
+			</div>
+			<p id="details2" class="detailed-info hidden">Systemutvikler</p>
+		</div>
+		<div class="contact-wrapper">
+			<div onclick="toggleDetails(3)" class="contact-header">
+				<h2>Alexander Perry</h2>
+				<img src="../../images/perry.png" alt="Perrys profilbilde"/>
+			</div>
+			<p id="details3" class="hidden">Systemutvikler</p>
 		</div>
 
 		<style>
+			 .contact-wrapper{
+				  display: block;
+				  position: relative;
+				  background-color: #c284b3;
+				  padding: 20px;
+				  width: 300px;
+				  font-size: 1.2rem;
+				  font-weight: 300;
+				  cursor: pointer;
+				  -webkit-user-select: none;
+			}
+
 			.contact-header {
 			  margin-bottom: 10px;
 			}
@@ -40,24 +61,20 @@
 				border-radius: 50%;
 			}
 
-			.detailed-info {
-				
-
-			}
-
-			.detailed-info.hidden {
+			.hidden {
 				display: none;
 			}
 		
 		</style>
 		<script>
-			var toggleDetails = function(){
-				var opened = false;
-		     	var d = document.querySelector(".detailed-info");
-            	if(!opened){
-            		d.className = "detailed-info";
+			var opened = false;
+			var toggleDetails = function(id){
+		     	var d = document.getElementById("details"+id);
+
+            	if(opened === false){
+            		d.className = "";
             	} else {
-            		d.className = d.className + " hidden";
+            		d.className = "hidden";
             	}
             	opened = !opened;
 			};
