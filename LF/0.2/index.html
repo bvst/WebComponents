@@ -5,23 +5,57 @@
 		<title>Cibers contact app!</title>
 	</head>
 	<body>
-		<div class="contact-header">
-			<h2>Morten Kjelling</h2>
-			<img src="../../images/morten.png" alt="Mortens profilbilde"/>
-			<p class="detailed-info">Systemutvikler</p>
+		<div id="logo"> 
+			<img src="../../images/ciber_logo.png" alt="Logo">
 		</div>
-		<div>
-			<h2>Bjørn Vegard Thoresen</h2>
-			<img src="../../images/bv.png" alt="Bjørn Vegard profilbilde"/>
-			<p class="detailed-info">Systemutvikler</p>
+		<div class="contact-wrapper">
+			<div onclick="toggleDetails(1)" class="contact-header">
+				<h2>Morten Kjelling</h2>
+				<img src="../../images/morten.png" alt="Mortens profilbilde"/>
+			</div>
+			<ul id="details1" class="hidden">
+				<li id="position">Frontend / .NET</li>
+				<li id="project">Komplett.no</li>
+				<li id="education">UiO</li>
+			</ul>
+
 		</div>
-		<div>
-			<h2>Alexander Perry</h2>
-			<img src="../../images/perry.png" alt="Perrys profilbilde"/>
-			<p class="detailed-info">Systemutvikler</p>
+		<div class="contact-wrapper">
+			<div onclick="toggleDetails(2)" class="contact-header">
+				<h2>Bjørn Vegard Thoresen</h2>
+				<img src="../../images/bv.png" alt="Bjørn Vegard profilbilde"/>
+			</div>
+			<ul id="details2" class="hidden">
+				<li id="position">.NET</li>
+				<li id="project"></li>
+				<li id="education">HiO</li>
+			</ul>
+		</div>
+		<div class="contact-wrapper">
+			<div onclick="toggleDetails(3)" class="contact-header">
+				<h2>Alexander Perry</h2>
+				<img src="../../images/perry.png" alt="Perrys profilbilde"/>
+			</div>
+			<ul id="details3" class="hidden">
+				<li id="position">Frontend / .NET</li>
+				<li id="project">NAF</li>
+				<li id="education">Informatikk @ NTNU</li>
+			</ul>
 		</div>
 
 		<style>
+			 .contact-wrapper{
+				  display: block;
+				  position: relative;
+				  background-color: #c284b3;
+				  padding: 20px;
+				  width: 300px;
+				  font-size: 1.2rem;
+				  font-weight: 300;
+				  cursor: pointer;
+				  -webkit-user-select: none;
+			}
+
 			.contact-header {
 			  margin-bottom: 10px;
 			}
@@ -40,38 +74,23 @@
 				border-radius: 50%;
 			}
 
-			.detailed-info {
-				
-
-			}
-
-			.detailed-info.hidden {
+			.hidden {
 				display: none;
 			}
 		
 		</style>
 		<script>
-			var proto = Object.create(HTMLElement.prototype);
+			var opened = false;
+			var toggleDetails = function(id){
+		     	var d = document.getElementById("details"+id);
 
-			proto.createdCallback = function() {
-				var self = this,
-					opened = false;
-			    	template = document.querySelector('#contact-template'),
-		            shadow = this.createShadowRoot(),
-		            clone = document.importNode(template.content, true);
-		            self.addEventListener("click", function(){
-		            	var d = shadow.querySelector(".detailed-info");
-		            	if(!opened){
-		            		d.className = "detailed-info";
-		            	} else {
-		            		d.className = d.className + " hidden";
-		            	}
-		            	opened = !opened;
-		            });
-		            shadow.appendChild(clone);
+            	if(opened === false){
+            		d.className = "";
+            	} else {
+            		d.className = "hidden";
+            	}
+            	opened = !opened;
 			};
-
-			document.registerElement('contact-tile', {prototype: proto});
 		</script>
 	</body>
 </html>
