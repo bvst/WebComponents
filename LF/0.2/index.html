@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Cibers contact app!</title>
+	</head>
+	<body>
+		<div class="contact-header">
+			<h2>Morten Kjelling</h2>
+			<img src="../../images/morten.png" alt="Mortens profilbilde"/>
+			<p class="detailed-info">Systemutvikler</p>
+		</div>
+		<div>
+			<h2>Bjørn Vegard Thoresen</h2>
+			<img src="../../images/bv.png" alt="Bjørn Vegard profilbilde"/>
+			<p class="detailed-info">Systemutvikler</p>
+		</div>
+		<div>
+			<h2>Alexander Perry</h2>
+			<img src="../../images/perry.png" alt="Perrys profilbilde"/>
+			<p class="detailed-info">Systemutvikler</p>
+		</div>
+
+		<style>
+			.contact-header {
+			  margin-bottom: 10px;
+			}
+
+			.contact-header h2 {
+			  font-size: 14px;
+			  color:#000;
+			}
+
+			.contact-header img {
+				position:absolute;
+				top: 20px;
+				right: 20px;
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+			}
+
+			.detailed-info {
+				
+
+			}
+
+			.detailed-info.hidden {
+				display: none;
+			}
+		
+		</style>
+		<script>
+			var proto = Object.create(HTMLElement.prototype);
+
+			proto.createdCallback = function() {
+				var self = this,
+					opened = false;
+			    	template = document.querySelector('#contact-template'),
+		            shadow = this.createShadowRoot(),
+		            clone = document.importNode(template.content, true);
+		            self.addEventListener("click", function(){
+		            	var d = shadow.querySelector(".detailed-info");
+		            	if(!opened){
+		            		d.className = "detailed-info";
+		            	} else {
+		            		d.className = d.className + " hidden";
+		            	}
+		            	opened = !opened;
+		            });
+		            shadow.appendChild(clone);
+			};
+
+			document.registerElement('contact-tile', {prototype: proto});
+		</script>
+	</body>
+</html>
