@@ -82,14 +82,11 @@
 		<script>
 			var toggleDetails = function(id){
 	     	var d = document.getElementById("details" + id);
-	      	if(hasClass(d, "hidden")){
+	      	if(d.classList.contains("hidden")){
 	      		d.className = "";
 	      	} else {
 	      		d.className = "hidden";
 	      	}
-			};
-			var hasClass = function(element, cls) {
-				return element.classList.contains(cls);
 			};
 		</script>
 	</body>
