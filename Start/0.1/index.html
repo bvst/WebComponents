@@ -5,7 +5,7 @@
 		<title>Cibers contact app!</title>
 	</head>
 	<body>
-		<div id="logo"> 
+		<div id="logo">
 			<img src="../../images/ciber_logo.png" alt="Logo">
 		</div>
 		<div class="contact-wrapper">
@@ -77,19 +77,19 @@
 			.hidden {
 				display: none;
 			}
-		
+
 		</style>
 		<script>
-			var opened = false;
 			var toggleDetails = function(id){
-		     	var d = document.getElementById("details"+id);
-
-            	if(opened === false){
+		     	var d = document.getElementById("details" + id);
+            	if(hasClass(d, "hidden")){
             		d.className = "";
             	} else {
             		d.className = "hidden";
             	}
-            	opened = !opened;
+			};
+			var hasClass = function(element, cls) {
+				return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 			};
 		</script>
 	</body>
