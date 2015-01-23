@@ -1,0 +1,73 @@
+<template>
+  <style>
+    .contact-wrapper{
+      display: block;
+      position: relative;
+      background-color: #c284b3;
+      padding: 20px;
+      width: 300px;
+      font-size: 1.2rem;
+      font-weight: 300;
+      cursor: pointer;
+      -webkit-user-select: none;
+    }
+
+    .contact-header {
+      margin-bottom: 10px;
+    }
+
+    .contact-header h2 {
+      font-size: 14px;
+      color:#000;
+    }
+
+    .contact-header img {
+      position:absolute;
+      top: 20px;
+      right: 20px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <div id="logo">
+    <img src="../../images/ciber_logo.png" alt="Logo">
+  </div>
+  <div class="contact-wrapper">
+    <div onclick="toggleDetails(1)" class="contact-header">
+      <h2>Morten Kjelling</h2>
+      <img src="../../images/morten.png" alt="Mortens profilbilde"/>
+    </div>
+    <ul id="details1" class="hidden">
+      <li id="position">Frontend / .NET</li>
+      <li id="project">Komplett.no</li>
+      <li id="education">UiO</li>
+    </ul>
+  </div>
+  <div class="contact-wrapper">
+    <div onclick="toggleDetails(2)" class="contact-header">
+      <h2>Bjørn Vegard Thoresen</h2>
+      <img src="../../images/bv.png" alt="Bjørn Vegard profilbilde"/>
+    </div>
+    <ul id="details2" class="hidden">
+      <li id="position">.NET</li>
+      <li id="project"></li>
+      <li id="education">HiO</li>
+    </ul>
+  </div>
+  <div class="contact-wrapper">
+    <div onclick="toggleDetails(3)" class="contact-header">
+      <h2>Alexander Perry</h2>
+      <img src="../../images/perry.png" alt="Perrys profilbilde"/>
+    </div>
+    <ul id="details3" class="hidden">
+      <li id="position">Frontend / .NET</li>
+      <li id="project">NAF</li>
+      <li id="education">Informatikk @ NTNU</li>
+    </ul>
+  </div>
+</template>
