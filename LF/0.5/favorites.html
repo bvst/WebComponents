@@ -6,7 +6,6 @@
 		<title>Cibers contact app!</title>
 
 		<link rel="stylesheet" href="../../css/main.css"/>
-		<link rel="import" href="contact-tile.html"/>
 	</head>
 
 	<body>
@@ -15,7 +14,7 @@
 				<img src="../../css/images/ciber_logo.png" alt="Logo">
 			</figure>
 			<nav class="navigation">
-				<a href="#">Hovedside</a>
+				<a href="index.html">Hovedside</a>
 				<a href="favorites.html">Favoritter</a>
 			</nav>
 		</header>
@@ -47,42 +46,43 @@
 					<li id="education">Informatikk @ NTNU</li>
 				</ul>
 			</contact-tile>
-			<contact-tile>
-				<h2>Marius Gundersen</h2>
-				<img src="../../css/images/perry.png" alt="Gundersens profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett.no</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Njaal Gjerde</h2>
-				<img src="../../css/images/perry.png" alt="Njaals profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Andreas Brustad</h2>
-				<img src="../../css/images/perry.png" alt="Brustads profilbilde"/>
-				<ul>
-					<li id="position">.NET</li>
-					<li id="project">Komplett</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Samson Valland</h2>
-				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">NAF</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
 		</section>
+
+		<template id="contact-template">
+			<style>
+			.contact-header {
+			  margin-bottom: 10px;
+			}
+
+			.contact-header h2 {
+			  font-size: 14px;
+			  color:#000;
+			}
+
+			.contact-header ::content img {
+				position:absolute;
+				top: 20px;
+				right: 20px;
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+			}
+
+			.detailed-info.hidden {
+				display: none;
+			}
+			
+			</style>
+
+			<div class="contact-header">
+				<content select="h2"></content>
+				<content select="img"></content>
+			</div>
+			<div class="detailed-info hidden">
+				<content select="ul"></content>
+			</div>
+		</template>
+
+		<script src="contact-tile.js"></script>
 	</body>
 </html>

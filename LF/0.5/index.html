@@ -3,53 +3,89 @@
 
 	<head>
 		<meta charset="utf-8">
+		<title>Cibers contact app!</title>
 
-		<title>Web Components</title>
+		<link rel="stylesheet" href="../../css/main.css"/>
 	</head>
 
 	<body>
-		<contact-tile>
-			<h2>Morten Kjelling</h2>
-			<img src="../../images/morten.png" alt="Mortens profilbilde"/>
-			<ul>
-				<li id="position">Frontend / .NET</li>
-				<li id="project">Komplett.no</li>
-				<li id="education">UiO</li>
-			</ul>
-		</contact-tile>
-		<contact-tile>
-			<h2>Bjørn Vegard Thoresen</h2>
-			<img src="../../images/bv.png" alt="Bjørn Vegards profilbilde"/>
-			<ul>
-				<li id="position">.NET</li>
-				<li id="project"></li>
-				<li id="education">HiO</li>
-			</ul>
-		</contact-tile>
-		<contact-tile>
-			<h2>Alexander Perry</h2>
-			<img src="../../images/perry.png" alt="Alexanders profilbilde"/>
-			<ul>
-				<li id="position">Frontend / .NET</li>
-				<li id="project">NAF</li>
-				<li id="education">Informatikk @ NTNU</li>
-			</ul>
-		</contact-tile>
+		<header class="header">
+			<figure id="logo"> 
+				<img src="../../css/images/ciber_logo.png" alt="Logo">
+			</figure>
+			<nav class="navigation">
+				<a href="#">Hovedside</a>
+				<a href="favorites.html">Favoritter</a>
+			</nav>
+		</header>
+		<section class="contacts">
+			<contact-tile>
+				<h2>Morten Kjelling</h2>
+				<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
+				<ul>
+					<li id="position">Frontend / .NET</li>
+					<li id="project">Komplett.no</li>
+					<li id="education">UiO</li>
+				</ul>
+			</contact-tile>
+			<contact-tile>
+				<h2>Bjørn Vegard Thoresen</h2>
+				<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
+				<ul>
+					<li id="position">.NET</li>
+					<li id="project"></li>
+					<li id="education">HiO</li>
+				</ul>
+			</contact-tile>
+			<contact-tile>
+				<h2>Alexander Perry</h2>
+				<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
+				<ul>
+					<li id="position">Frontend / .NET</li>
+					<li id="project">NAF</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</contact-tile>
+			<contact-tile>
+				<h2>Marius Gundersen</h2>
+				<img src="../../css/images/perry.png" alt="Gundersens profilbilde"/>
+				<ul>
+					<li id="position">Frontend / .NET</li>
+					<li id="project">Komplett.no</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</contact-tile>
+			<contact-tile>
+				<h2>Njaal Gjerde</h2>
+				<img src="../../css/images/perry.png" alt="Njaals profilbilde"/>
+				<ul>
+					<li id="position">Frontend / .NET</li>
+					<li id="project">Komplett</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</contact-tile>
+			<contact-tile>
+				<h2>Andreas Brustad</h2>
+				<img src="../../css/images/perry.png" alt="Brustads profilbilde"/>
+				<ul>
+					<li id="position">.NET</li>
+					<li id="project">Komplett</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</contact-tile>
+			<contact-tile>
+				<h2>Samson Valland</h2>
+				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				<ul>
+					<li id="position">Frontend / .NET</li>
+					<li id="project">NAF</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</contact-tile>
+		</section>
 
 		<template id="contact-template">
 			<style>
-			:host {
-			  display: block;
-			  position: relative;
-			  background-color: #c284b3;
-			  padding: 20px;
-			  margin:20px;
-			  width: 300px;
-			  font-size: 1.2rem;
-			  font-weight: 300;
-			  cursor: pointer;
-			  -webkit-user-select: none;
-			}
 			.contact-header {
 			  margin-bottom: 10px;
 			}
