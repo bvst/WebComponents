@@ -1,0 +1,66 @@
+<link rel="import" href="../../polymer/polymer.html">
+
+<polymer-element name="contact-tile">
+  <template>
+    <style>
+    :host {
+        display: block;
+        position: relative;
+        background-color: #c284b3;
+        padding: 20px;
+        margin:20px;
+        width: 300px;
+        font-size: 1.2rem;
+        font-weight: 300;
+        cursor: pointer;
+        -webkit-user-select: none;
+      }
+      .contact-header {
+        margin-bottom: 10px;
+      }
+
+      .contact-header h2 {
+        font-size: 14px;
+        color:#000;
+      }
+
+      .contact-header ::content img {
+        position:absolute;
+        top: 20px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+      }
+
+      .detailed-info {
+        display: none;
+      }
+
+      :host([displayDetails]) .detailed-info {
+        display: block;
+      }
+    </style>
+
+    <div class="contact-header" on-tap="{{contactTapped}}">
+      <content select="h2"></content>
+      <content select="img"></content>
+    </div>
+    <div class="detailed-info">
+      <content select="ul"></content>
+    </div>
+  </template>
+  <script>
+  Polymer({
+    publish: {
+      displayDetails: {
+        value: false,
+        reflect: true
+      }
+    },
+    contactTapped: function(event, detail, sender) {
+      this.displayDetails = !this.displayDetails;
+    }
+  });
+  </script>
+</polymer-element>

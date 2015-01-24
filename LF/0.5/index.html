@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Web Components</title>
+	</head>
+
+	<body>
+		<contact-tile>
+			<h2>Morten Kjelling</h2>
+			<img src="../../images/morten.png" alt="Mortens profilbilde"/>
+			<ul>
+				<li id="position">Frontend / .NET</li>
+				<li id="project">Komplett.no</li>
+				<li id="education">UiO</li>
+			</ul>
+		</contact-tile>
+		<contact-tile>
+			<h2>Bjørn Vegard Thoresen</h2>
+			<img src="../../images/bv.png" alt="Bjørn Vegards profilbilde"/>
+			<ul>
+				<li id="position">.NET</li>
+				<li id="project"></li>
+				<li id="education">HiO</li>
+			</ul>
+		</contact-tile>
+		<contact-tile>
+			<h2>Alexander Perry</h2>
+			<img src="../../images/perry.png" alt="Alexanders profilbilde"/>
+			<ul>
+				<li id="position">Frontend / .NET</li>
+				<li id="project">NAF</li>
+				<li id="education">Informatikk @ NTNU</li>
+			</ul>
+		</contact-tile>
+
+		<template id="contact-template">
+			<style>
+			:host {
+			  display: block;
+			  position: relative;
+			  background-color: #c284b3;
+			  padding: 20px;
+			  margin:20px;
+			  width: 300px;
+			  font-size: 1.2rem;
+			  font-weight: 300;
+			  cursor: pointer;
+			  -webkit-user-select: none;
+			}
+			.contact-header {
+			  margin-bottom: 10px;
+			}
+
+			.contact-header h2 {
+			  font-size: 14px;
+			  color:#000;
+			}
+
+			.contact-header ::content img {
+				position:absolute;
+				top: 20px;
+				right: 20px;
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+			}
+
+			.detailed-info.hidden {
+				display: none;
+			}
+			
+			</style>
+
+			<div class="contact-header">
+				<content select="h2"></content>
+				<content select="img"></content>
+			</div>
+			<div class="detailed-info hidden">
+				<content select="ul"></content>
+			</div>
+		</template>
+
+		<script src="contact-tile.js"></script>
+	</body>
+</html>
