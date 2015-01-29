@@ -20,8 +20,8 @@
 		</header>
 		<section class="contacts">
 			<div class="contact-wrapper">
-					<h2>Morten Kjelling</h2>
-					<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
+				<h2>Morten Kjelling</h2>
+				<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
 				<ul class="detailed-info hidden">
 					<li id="position">Frontend / .NET</li>
 					<li id="project">Komplett.no</li>
@@ -29,10 +29,8 @@
 				</ul>
 			</div>
 			<div class="contact-wrapper">
-				<header class="contact-header">
-					<h2>Bjørn Vegard Thoresen</h2>
-					<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
-				</header>
+				<h2>Bjørn Vegard Thoresen</h2>
+				<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
 				<ul class="detailed-info hidden">
 					<li id="position">.NET</li>
 					<li id="project"></li>
@@ -40,10 +38,8 @@
 				</ul>
 			</div>
 			<div class="contact-wrapper">
-				<header class="contact-header">
-					<h2>Alexander Perry</h2>
-					<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
-				</header>
+				<h2>Alexander Perry</h2>
+				<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
 				<ul class="detailed-info hidden">
 					<li id="position">Frontend / .NET</li>
 					<li id="project">NAF</li>
@@ -94,29 +90,37 @@
 			  {'name': 'Bjørn Vegard Thoresen', 'img': 'bv.png', 'position': '.NET', 'project': '', 'education': 'HiO'}
 			];
 
-			var host = document.querySelector(".contact-wrapper");
+			var hosts = document.getElementsByClassName("contact-wrapper");
 
-			var root = host.createShadowRoot();
+			for(var i = 0; i < hosts.length; i++){
+				var template = document.querySelector("#contact-template");
+				var clone = document.importNode(template.content, true);
+				var root = hosts[i].createShadowRoot();
 
-			var template = document.querySelector("#contact-template");
+				root.appendChild(clone);
 
-			var clone = document.importNode(template.content, true);
+				var opened = false;
 
-			root.appendChild(clone);
+				hosts[i].addEventListener("click", function(){
+	        		var details = document.getElementsByClassName("detailed-info");
 
-			var opened = false;
+		        	for(var i = 0; i < details.length; i++){
+			        	if(!opened){
+		        			details[i].className = "detailed-info";
+			        	} else {
+		        			details[i].className = details[i].className + " hidden";
+			        	}
+			        }
 
-			host.addEventListener("click", function(){
-        		var details = document.querySelector(".detailed-info");
+		        	opened = !opened;
+		        });
+			}
 
-	        	if(!opened){
-	        		details.className = "detailed-info";
-	        	} else {
-	        		details.className = details.className + " hidden";
-	        	}
 
-	        	opened = !opened;
-	        });
+
+  			template.remove();
+
+			
 		</script>
 	</body>
 </html>
