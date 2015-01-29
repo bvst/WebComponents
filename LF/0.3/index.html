@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Cibers contact app!</title>
+
+		<link rel="stylesheet" href="../../css/main.css"/>
+	</head>
+	<body>
+		<header class="header">
+			<figure id="logo">
+				<img src="../../css/images/ciber_logo.png" alt="Logo">
+			</figure>
+			<nav class="navigation">
+				<a href="#">Hovedside</a>
+				<a href="favorites.html">Favoritter</a>
+			</nav>
+		</header>
+
+		<section class="contacts">
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Morten Kjelling</h2>
+					<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
+				</header>
+				<ul id="details1" class="detailed-info hidden">
+					<li>Frontend / .NET</li>
+					<li>Komplett.no</li>
+					<li>UiO</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Bjørn Vegard Thoresen</h2>
+					<img src="../../css/images/bv.png" alt="Bjørn Vegard profilbilde"/>
+				</header>
+				<ul id="details2" class="detailed-info hidden">
+					<li>.NET</li>
+					<li></li>
+					<li>HiO</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Alexander Perry</h2>
+					<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				</header>
+				<ul id="details3" class="detailed-info hidden">
+					<li>Frontend / .NET</li>
+					<li>NAF</li>
+					<li>Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Marius Gundersen</h2>
+					<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				</header>
+				<ul id="details4" class="detailed-info hidden">
+					<li id="position">Frontend / .NET</li>
+					<li id="project">Komplett.no</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Njaal Gjerde</h2>
+					<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				</header>
+				<ul id="details5" class="detailed-info hidden">
+					<li id="position">Frontend / .NET</li>
+					<li id="project">Komplett</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Andreas Brustad</h2>
+					<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				</header>
+				<ul id="details6" class="detailed-info hidden">
+					<li id="position">.NET</li>
+					<li id="project">Komplett</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<header class="contact-header">
+					<h2>Samson Valland</h2>
+					<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				</header>
+				<ul id="details7" class="detailed-info hidden">
+					<li id="position">Frontend / .NET</li>
+					<li id="project">NAF</li>
+					<li id="education">Informatikk @ NTNU</li>
+				</ul>
+			</section>
+		</section>
+
+		<template id="contact-template">
+			<style>
+			.contact-header {
+				margin-bottom: 10px;
+			}
+
+			.contact-header h2 {
+				font-size: 14px;
+				color:#000;
+			}
+
+			.contact-header ::content img {
+				position:absolute;
+				top: 20px;
+				right: 20px;
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+			}
+
+			.detailed-info.hidden {
+				display: none;
+			}
+
+			</style>
+
+			<div class="contact-header">
+				<content select="h2"></content>
+				<content select="img"></content>
+			</div>
+			<div class="detailed-info">
+				<content select="ul"></content>
+			</div>
+		</template>
+
+		<script>
+			var template = document.querySelector('#contact-template'),
+					hosts = document.getElementsByClassName("contact-wrapper");
+
+			for(var i = 0; i < hosts.length; i++) {
+				var clone = document.importNode(template.content, true);
+
+				hosts[i].addEventListener("click", function(){
+					var details = this.querySelector(".detailed-info");
+						if(details.classList.contains("hidden")){
+							details.className = "detailed-info";
+						} else {
+							details.className = details.className + " hidden";
+						}
+				});
+			}
+		</script>
+	</body>
+</html>
