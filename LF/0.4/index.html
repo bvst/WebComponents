@@ -19,37 +19,69 @@
 			</nav>
 		</header>
 		<section class="contacts">
-			<div class="contact-wrapper">
-					<h2>Morten Kjelling</h2>
-					<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
-				<ul class="detailed-info hidden">
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett.no</li>
-					<li id="education">UiO</li>
+			<section class="contact-wrapper">
+				<h2>Morten Kjelling</h2>
+				<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>Komplett.no</li>
+					<li>UiO</li>
 				</ul>
-			</div>
-			<div class="contact-wrapper">
-				<header class="contact-header">
-					<h2>Bjørn Vegard Thoresen</h2>
-					<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
-				</header>
-				<ul class="detailed-info hidden">
-					<li id="position">.NET</li>
-					<li id="project"></li>
-					<li id="education">HiO</li>
+			</section>
+			<section class="contact-wrapper">
+				<h2>Bjørn Vegard Thoresen</h2>
+				<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
+				<ul>
+					<li>.NET</li>
+					<li></li>
+					<li>HiO</li>
 				</ul>
-			</div>
-			<div class="contact-wrapper">
-				<header class="contact-header">
-					<h2>Alexander Perry</h2>
-					<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
-				</header>
-				<ul class="detailed-info hidden">
-					<li id="position">Frontend / .NET</li>
-					<li id="project">NAF</li>
-					<li id="education">Informatikk @ NTNU</li>
+			</section>
+			<section class="contact-wrapper">
+				<h2>Alexander Perry</h2>
+				<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>NAF</li>
+					<li>Informatikk @ NTNU</li>
 				</ul>
-			</div>
+			</section>
+			<section class="contact-wrapper">
+				<h2>Marius Gundersen</h2>
+				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>Komplett.no</li>
+					<li>Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<h2>Njaal Gjerde</h2>
+				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>Komplett</li>
+					<li>Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<h2>Andreas Brustad</h2>
+				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				<ul>
+					<li>.NET</li>
+					<li>Komplett</li>
+					<li>Informatikk @ NTNU</li>
+				</ul>
+			</section>
+			<section class="contact-wrapper">
+				<h2>Samson Valland</h2>
+				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>NAF</li>
+					<li>Informatikk @ NTNU</li>
+				</ul>
+			</section>
 		</section>
 
 		<template id="contact-template">
@@ -82,41 +114,41 @@
 				<content select="h2"></content>
 				<content select="img"></content>
 			</div>
-			<div class="detailed-info">
+			<div class="detailed-info hidden">
 				<content select="ul"></content>
 			</div>
 		</template>
 
 		<script>
-			var contacts = [
-			  {'name': 'Morten Kjelling', 'img': 'morten.png', 'position': 'Frontend / .NET', 'project': 'Komplett.no', 'education': 'UiO'},
-			  {'name': 'Alexander Perry', 'img': 'perry.png', 'position': 'Frontend / .NET', 'project': 'NAF', 'education': 'Informatikk @ NTNU'},
-			  {'name': 'Bjørn Vegard Thoresen', 'img': 'bv.png', 'position': '.NET', 'project': '', 'education': 'HiO'}
-			];
-
-			var host = document.querySelector(".contact-wrapper");
-
-			var root = host.createShadowRoot();
-
+			var hosts = document.getElementsByClassName("contact-wrapper");
 			var template = document.querySelector("#contact-template");
+				
+			for(var i = 0; i < hosts.length; i++){
+				createShadow(hosts[i]);
+			}
 
-			var clone = document.importNode(template.content, true);
+			function createShadow(host){
+				var root = host.createShadowRoot();
+				console.log(host);
+				var clone = document.importNode(template.content, true);
+				root.appendChild(clone);
 
-			root.appendChild(clone);
+				var opened = false;
+				console.log(root);
 
-			var opened = false;
+				root.host.addEventListener("click", function(){
+					var details = root.querySelector(".detailed-info");
 
-			host.addEventListener("click", function(){
-        		var details = document.querySelector(".detailed-info");
+		        	if(!opened){
+	        			details.className = "detailed-info";
+		        	} else {
+	        			details.className = details.className + " hidden";
+		        	}
+		        	opened = !opened;
 
-	        	if(!opened){
-	        		details.className = "detailed-info";
-	        	} else {
-	        		details.className = details.className + " hidden";
-	        	}
-
-	        	opened = !opened;
-	        });
+		        	console.log(details.className + ' ' + opened);
+		        });
+			}
 		</script>
 	</body>
 </html>

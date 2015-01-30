@@ -19,33 +19,33 @@
 			</nav>
 		</header>
 		<section class="contacts">
-			<div class="contact-wrapper">
+			<section class="contact-wrapper">
 				<h2>Morten Kjelling</h2>
 				<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
-				<ul class="detailed-info hidden">
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett.no</li>
-					<li id="education">UiO</li>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>Komplett.no</li>
+					<li>UiO</li>
 				</ul>
-			</div>
-			<div class="contact-wrapper">
+			</section>
+			<section class="contact-wrapper">
 				<h2>Bjørn Vegard Thoresen</h2>
 				<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
-				<ul class="detailed-info hidden">
-					<li id="position">.NET</li>
-					<li id="project"></li>
-					<li id="education">HiO</li>
+				<ul>
+					<li>.NET</li>
+					<li></li>
+					<li>HiO</li>
 				</ul>
-			</div>
-			<div class="contact-wrapper">
+			</section>
+			<section class="contact-wrapper">
 				<h2>Alexander Perry</h2>
 				<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
-				<ul class="detailed-info hidden">
-					<li id="position">Frontend / .NET</li>
-					<li id="project">NAF</li>
-					<li id="education">Informatikk @ NTNU</li>
+				<ul>
+					<li>Frontend / .NET</li>
+					<li>NAF</li>
+					<li>Informatikk @ NTNU</li>
 				</ul>
-			</div>
+			</section>
 		</section>
 
 		<template id="contact-template">
@@ -78,49 +78,41 @@
 				<content select="h2"></content>
 				<content select="img"></content>
 			</div>
-			<div class="detailed-info">
+			<div class="detailed-info hidden">
 				<content select="ul"></content>
 			</div>
 		</template>
 
 		<script>
-			var contacts = [
-			  {'name': 'Morten Kjelling', 'img': 'morten.png', 'position': 'Frontend / .NET', 'project': 'Komplett.no', 'education': 'UiO'},
-			  {'name': 'Alexander Perry', 'img': 'perry.png', 'position': 'Frontend / .NET', 'project': 'NAF', 'education': 'Informatikk @ NTNU'},
-			  {'name': 'Bjørn Vegard Thoresen', 'img': 'bv.png', 'position': '.NET', 'project': '', 'education': 'HiO'}
-			];
-
 			var hosts = document.getElementsByClassName("contact-wrapper");
-
+			var template = document.querySelector("#contact-template");
+				
 			for(var i = 0; i < hosts.length; i++){
-				var template = document.querySelector("#contact-template");
-				var clone = document.importNode(template.content, true);
-				var root = hosts[i].createShadowRoot();
+				createShadow(hosts[i]);
+			}
 
+			function createShadow(host){
+				var root = host.createShadowRoot();
+				console.log(host);
+				var clone = document.importNode(template.content, true);
 				root.appendChild(clone);
 
 				var opened = false;
+				console.log(root);
 
-				hosts[i].addEventListener("click", function(){
-	        		var details = document.getElementsByClassName("detailed-info");
+				root.host.addEventListener("click", function(){
+					var details = root.querySelector(".detailed-info");
 
-		        	for(var i = 0; i < details.length; i++){
-			        	if(!opened){
-		        			details[i].className = "detailed-info";
-			        	} else {
-		        			details[i].className = details[i].className + " hidden";
-			        	}
-			        }
-
+		        	if(!opened){
+	        			details.className = "detailed-info";
+		        	} else {
+	        			details.className = details.className + " hidden";
+		        	}
 		        	opened = !opened;
+
+		        	console.log(details.className + ' ' + opened);
 		        });
 			}
-
-
-
-  			template.remove();
-
-			
 		</script>
 	</body>
 </html>
