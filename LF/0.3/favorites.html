@@ -1,109 +1,75 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Cibers contact app!</title>
+	<head>
+		<meta charset="utf-8">
+		<title>Cibers contact app!</title>
 
-	<link rel="stylesheet" href="../../css/main.css"/>
-</head>
-<body>
-	<header class="header">
-		<figure id="logo">
-			<img src="../../css/images/ciber_logo.png" alt="Logo">
-		</figure>
-		<nav class="navigation">
-			<a href="index.html">Hovedside</a>
-			<a href="#">Favoritter</a>
-		</nav>
-	</header>
+		<link rel="stylesheet" href="../../css/main.css"/>
+	</head>
+	<body>
+		<header class="header">
+			<figure id="logo">
+				<img src="../../css/images/ciber_logo.png" alt="Logo">
+			</figure>
+			<nav class="navigation">
+				<a href="index.html">Hovedside</a>
+				<a href="favorites.html">Favoritter</a>
+			</nav>
+		</header>
 
-	<section class="contacts">
-		<section class="contact-wrapper">
-			<header class="contact-header">
-				<h2>Morten Kjelling</h2>
-				<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
-			</header>
-			<ul class="detailed-info hidden">
-				<li>Frontend / .NET</li>
-				<li>Komplett.no</li>
-				<li>UiO</li>
-			</ul>
+		<section class="contacts">
+			
 		</section>
-		<section class="contact-wrapper">
-			<header class="contact-header">
-				<h2>Bjørn Vegard Thoresen</h2>
-				<img src="../../css/images/bv.png" alt="Bjørn Vegard profilbilde"/>
-			</header>
-			<ul class="detailed-info hidden">
-				<li>.NET</li>
-				<li></li>
-				<li>HiO</li>
-			</ul>
-		</section>
-		<section class="contact-wrapper">
-			<header class="contact-header">
-				<h2>Alexander Perry</h2>
-				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
-			</header>
-			<ul class="detailed-info hidden">
-				<li>Frontend / .NET</li>
-				<li>NAF</li>
-				<li>Informatikk @ NTNU</li>
-			</ul>
-		</section>
-	</section>
 
-	<template id="contact-template">
-		<style>
-			.contact-header {
-				margin-bottom: 10px;
+		<template id="contact-template">
+			<div class="contact-header">
+				<h2></h2>
+				<img/>
+			</div>
+			<div class="detailed-info hidden">
+				<ul>
+					<li class="position"></li>
+					<li class="project"></li>
+					<li class="education"></li>
+				</ul>
+			</div>
+		</template>
+
+		<script>
+			var contacts = [
+			  {'name': 'Morten Kjelling', 'img': '../../css/images/morten.png', 'position': 'Frontend / .NET', 'project': 'Komplett.no', 'education': 'UiO'},
+			  {'name': 'Alexander Perry', 'img': '../../css/images/perry.png', 'position': 'Frontend / .NET', 'project': 'NAF', 'education': 'Informatikk @ NTNU'},
+			  {'name': 'Bjørn Vegard Thoresen', 'img': '../../css/images/bv.png', 'position': '.NET', 'project': '', 'education': 'HiO'}
+			];
+			var template = document.querySelector('#contact-template'),
+				contactsWrapper = document.querySelector(".contacts");
+
+			for(var i = 0; i < contacts.length; i++) {
+				var clone = document.importNode(template.content, true);
+				populatedAndInstertTemplate(i, clone);
 			}
 
-			.contact-header h2 {
-				font-size: 14px;
-				color:#000;
+			function populatedAndInstertTemplate(i, clone){
+				clone.querySelector("h2").textContent = contacts[i].name;
+				clone.querySelector("img").src = contacts[i].img;
+				clone.querySelector(".position").textContent = contacts[i].position;
+				clone.querySelector(".project").textContent = contacts[i].project;
+				clone.querySelector(".education").textContent = contacts[i].education;
+
+				var parentNode = document.createElement("section");
+				parentNode.className = "contact-wrapper";
+
+				contactsWrapper.appendChild(parentNode);
+				parentNode.appendChild(clone);
+				parentNode.addEventListener("click", function(){
+					var details = parentNode.querySelector(".detailed-info");
+						if(details.classList.contains("hidden")){
+							details.className = "detailed-info";
+						} else {
+							details.className = details.className + " hidden";
+						}
+				});
 			}
-
-			.contact-header ::content img {
-				position:absolute;
-				top: 20px;
-				right: 20px;
-				width: 70px;
-				height: 70px;
-				border-radius: 50%;
-			}
-
-			.detailed-info.hidden {
-				display: none;
-			}
-
-		</style>
-
-		<div class="contact-header">
-			<content select="h2"></content>
-			<content select="img"></content>
-		</div>
-		<div class="detailed-info">
-			<content select="ul"></content>
-		</div>
-	</template>
-
-	<script>
-		var template = document.querySelector('#contact-template'),
-		hosts = document.getElementsByClassName("contact-wrapper");
-
-		for(var i = 0; i < hosts.length; i++) {
-			var clone = document.importNode(template.content, true);
-
-			hosts[i].addEventListener("click", function(){
-				var details = this.querySelector(".detailed-info");
-				if(details.classList.contains("hidden")){
-					details.className = "detailed-info";
-				} else {
-					details.className = details.className + " hidden";
-				}
-			});
-		}
-	</script>
-</body>
+		</script>
+	</body>
 </html>
