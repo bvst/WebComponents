@@ -7,84 +7,42 @@
 
 		<script src="../../js/webcomponents.js"></script>
 
-		<link rel="stylesheet" href="../../css/main.css"/>
-		<link rel="import" href="contact-tile.html"/>
+		<link rel="stylesheet" href="main.css"/>
+		<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+  		<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+  		<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+		<link rel="import" href="contact-list.html"/>
 	</head>
 
-	<body>
-		<header class="header">
-			<figure id="logo"> 
-				<img src="../../css/images/ciber_logo.png" alt="Logo">
-			</figure>
-			<nav class="navigation">
-				<a href="#">Hovedside</a>
-				<a href="favorites.html">Favoritter</a>
-			</nav>
-		</header>
-		<section class="contacts">
-			<contact-tile>
-				<h2>Morten Kjelling</h2>
-				<img src="../../css/images/morten.png" alt="Mortens profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett.no</li>
-					<li id="education">UiO</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Bjørn Vegard Thoresen</h2>
-				<img src="../../css/images/bv.png" alt="Bjørn Vegards profilbilde"/>
-				<ul>
-					<li id="position">.NET</li>
-					<li id="project"></li>
-					<li id="education">HiO</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Alexander Perry</h2>
-				<img src="../../css/images/perry.png" alt="Alexanders profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">NAF</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Marius Gundersen</h2>
-				<img src="../../css/images/perry.png" alt="Gundersens profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett.no</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Njaal Gjerde</h2>
-				<img src="../../css/images/perry.png" alt="Njaals profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">Komplett</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Andreas Brustad</h2>
-				<img src="../../css/images/perry.png" alt="Brustads profilbilde"/>
-				<ul>
-					<li id="position">.NET</li>
-					<li id="project">Komplett</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-			<contact-tile>
-				<h2>Samson Valland</h2>
-				<img src="../../css/images/perry.png" alt="Perrys profilbilde"/>
-				<ul>
-					<li id="position">Frontend / .NET</li>
-					<li id="project">NAF</li>
-					<li id="education">Informatikk @ NTNU</li>
-				</ul>
-			</contact-tile>
-		</section>
+	<body unresolved>
+
+	  <core-header-panel mode="waterfall-tall">
+	    <core-toolbar>
+
+	    	<figure id="logo" class="top">
+	    		<img src="../../css/images/ciber_logo.png" alt="Logo">
+	    	</figure>
+			<paper-tabs class="bottom" id="tabs" selected="all" noink horizontal center layout>
+				<paper-tab name="all">Hovedside</paper-tab>
+				<paper-tab name="favorites">Favoritter</paper-tab>
+			</paper-tabs>
+
+	    </core-toolbar>
+
+	    <div class="container" layout vertical center>
+	      <contact-list show="all"></contact-list>
+	    </div>
+
+	  </core-header-panel>
+
+	  <script>
+	  var tabs = document.querySelector('paper-tabs');
+	  var list = document.querySelector('contact-list');
+
+	  tabs.addEventListener('core-select', function() {
+	    list.show = tabs.selected;
+	  });
+	  </script>
+
 	</body>
 </html>

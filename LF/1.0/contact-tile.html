@@ -1,8 +1,25 @@
-<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 
 <polymer-element name="contact-tile">
   <template>
     <style>
+      :host {
+          flex:1 0 350px;
+          align-self:stretch;
+          max-width:100%;
+          min-height: 10rem;
+          position: relative;
+          background-color: #4B2A91;
+          color: #C0D72F;
+          padding: 20px;
+          margin: 15px;
+          min-height: 100px;
+          font-size: 1.2rem;
+          font-weight: 300;
+          cursor: pointer;
+          -webkit-user-select: none;
+      }
       .contact-header {
         margin-bottom: 10px;
       }
@@ -28,6 +45,16 @@
       :host([displayDetails]) .detailed-info {
         display: block;
       }
+
+      core-icon-button {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        color: #636363;
+      }
+      :host([favorite]) core-icon-button {
+        color: #da4336;
+      }
     </style>
 
       <div class="contact-header">
@@ -37,7 +64,11 @@
       <div class="detailed-info">
         <content select="ul"></content>
       </div>
-
+      <core-icon-button
+        id="favicon"
+        icon="favorite"
+        on-tap="{{favoriteTapped}}">
+      </core-icon-button>
   </template>
   <script>
   Polymer({
@@ -48,10 +79,18 @@
       displayDetails: {
         value: false,
         reflect: true
+      },
+      favorite: {
+        value: false,
+        reflect: true
       }
     },
     contactTapped: function(event, detail, sender) {
       this.displayDetails = !this.displayDetails;
+    },
+    favoriteTapped: function(event, detail, sender) {
+      this.favorite = !this.favorite;
+      this.fire('favorite-tap');
     }
   });
   </script>

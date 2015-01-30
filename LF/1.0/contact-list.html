@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="contact-service.html">
+<link rel="import" href="contact-tile.html">
+
+<polymer-element name="contact-list" attributes="show">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    contact-tile {
+      margin-bottom: 30px;
+    }
+    </style>
+
+    <contact-service id="service" contacts="{{contacts}}"></contact-service>
+    
+    <div layout vertical center>
+      <template repeat="{{contact in contacts}}">
+        <contact-tile
+          favorite="{{contact.favorite}}"
+          on-favorite-tap="{{handleFavorite}}"
+          hidden?="{{show == 'favorites' && !contact.favorite}}">
+          <h2>{{contact.name}}</h2>
+          <img src="{{contact.img}}" width="70" height="70">
+          <ul>
+          	<li>{{contact.position}}</li>
+          	<li>{{contact.project}}</li>
+          	<li>{{contact.education}}</li>
+          </ul>
+        </contact-tile>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+    handleFavorite: function(event, detail, sender) {
+      var contact = sender.templateInstance.model.contact;
+      this.$.service.setFavorite(contact.uid, contact.favorite);
+    }
+  });
+  </script>
+</polymer-element>

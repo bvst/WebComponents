@@ -1,0 +1,49 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+html,body {
+    height: 100%;
+    margin: 0;
+    background-color: #E5E5E5;
+    font-family: 'PT Sans', 'Open Sans';
+  }
+
+#logo img{
+  margin-top: 60px;
+  width: 250px;
+  padding: 0 20px;
+}
+
+  core-header-panel {
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; 
+  }
+  core-toolbar {
+    background-color: #C0D72F;
+    color: #4B2A91;
+  }
+  #tabs {
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	  font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px;
+    width: 300px;
+  }
+
+  paper-tabs::shadow #selectionBar {
+    color: #4B2A91;
+    background-color: #4B2A91;
+  }
+  paper-tabs paper-tab::shadow #ink {
+    color: #4B2A91;
+  }
+
+  .container {
+    width: 80%;
+    margin: 50px auto;
+  }

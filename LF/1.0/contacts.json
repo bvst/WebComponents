@@ -1,0 +1,65 @@
+[
+  	{
+	  	"uid": 1,
+	  	"name": "Morten Kjelling",
+	  	 "img": "../../css/images/morten.png",
+	  	 "position": "Frontend / .NET",
+	  	 "project": "Komplett.no",
+	  	 "education": "UiO",
+	    "favorite": true
+	},
+  	{
+	  	"uid": 2,
+	  	"name": "Alexander Perry",
+	  	 "img": "../../css/images/perry.png",
+	  	 "position": "Frontend / .NET",
+	  	 "project": "NAF",
+	  	 "education": "Informatikk @ NTNU",
+	    "favorite": true
+	},
+  	{
+	  	"uid": 3,
+	  	"name": "Bjørn Vegard Thoresen",
+	  	 "img": "../../css/images/bv.png",
+	  	 "position": ".NET",
+	  	 "project": "",
+	  	 "education": "HiO",
+	    "favorite": true
+	},
+  	{
+	  	"uid": 4,
+	  	"name": "Marius Gundersen",
+	  	 "img": "../../css/images/bv.png",
+	  	 "position": "Frontend / .NET",
+	  	 "project": "Komplett",
+	  	 "education": "NTNU",
+	    "favorite": false
+	},
+  	{
+	  	"uid": 5,
+	  	"name": "Njaal Gjerde",
+	  	 "img": "../../css/images/bv.png",
+	  	 "position": "Frontend / .NET",
+	  	 "project": "Komplett",
+	  	 "education": "NTNU",
+	    "favorite": false
+	},
+  	{
+	  	"uid": 6,
+	  	"name": "Andreas Brustad",
+	  	 "img": "../../css/images/bv.png",
+	  	 "position": ".NET",
+	  	 "project": "Komplett",
+	  	 "education": "NTNU",
+	    "favorite": false
+	},
+  	{
+	  	"uid": 7,
+	  	"name": "Samson Valland",
+	  	 "img": "../../css/images/bv.png",
+	  	 "position": ".NET",
+	  	 "project": "NAF",
+	  	 "education": "?"  ,
+	    "favorite": false
+  }
+]
