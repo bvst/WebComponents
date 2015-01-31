@@ -9,14 +9,17 @@
       display: block;
       width: 100%;
     }
-    contact-tile {
-      margin-bottom: 30px;
+    
+    .contact-list{    	
+    	display:flex;
+    	flex-wrap:wrap;
+    	allign-items: strech;
     }
     </style>
 
     <contact-service id="service" contacts="{{contacts}}"></contact-service>
     
-    <div layout vertical center>
+    <div class="contact-list">
       <template repeat="{{contact in contacts}}">
         <contact-tile
           favorite="{{contact.favorite}}"

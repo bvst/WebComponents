@@ -8,9 +8,19 @@ html,body {
   }
 
 #logo img{
-  margin-top: 60px;
-  width: 250px;
+  width: 200px;
   padding: 0 20px;
+  position: absolute;
+  top:-20px;
+  right:20px;
+}
+
+.tall #logo img{
+  width: 300px;
+  padding: 0 20px;
+  position: absolute;
+  top:0px;
+  right:20px;
 }
 
   core-header-panel {

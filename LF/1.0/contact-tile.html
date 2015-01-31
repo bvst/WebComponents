@@ -5,7 +5,7 @@
   <template>
     <style>
       :host {
-          flex:1 0 350px;
+          flex:1 0 320px;
           align-self:stretch;
           max-width:100%;
           min-height: 10rem;
@@ -63,12 +63,12 @@
       </div>
       <div class="detailed-info">
         <content select="ul"></content>
-      </div>
-      <core-icon-button
-        id="favicon"
-        icon="favorite"
-        on-tap="{{favoriteTapped}}">
-      </core-icon-button>
+        <core-icon-button
+          id="favicon"
+          icon="favorite"
+          on-tap="{{favoriteTapped}}">
+        </core-icon-button>
+      </div>      
   </template>
   <script>
   Polymer({
