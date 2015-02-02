@@ -29,7 +29,7 @@
   	{
 	  	"uid": 4,
 	  	"name": "Marius Gundersen",
-	  	 "img": "../../css/images/bv.png",
+	  	 "img": "../../css/images/marius.jpg",
 	  	 "position": "Frontend / .NET",
 	  	 "project": "Komplett",
 	  	 "education": "NTNU",
@@ -38,7 +38,7 @@
   	{
 	  	"uid": 5,
 	  	"name": "Njaal Gjerde",
-	  	 "img": "../../css/images/bv.png",
+	  	 "img": "../../css/images/njaal.jpg",
 	  	 "position": "Frontend / .NET",
 	  	 "project": "Komplett",
 	  	 "education": "NTNU",
@@ -47,7 +47,7 @@
   	{
 	  	"uid": 6,
 	  	"name": "Andreas Brustad",
-	  	 "img": "../../css/images/bv.png",
+	  	 "img": "../../css/images/andreas.png",
 	  	 "position": ".NET",
 	  	 "project": "Komplett",
 	  	 "education": "NTNU",
@@ -56,10 +56,19 @@
   	{
 	  	"uid": 7,
 	  	"name": "Samson Valland",
-	  	 "img": "../../css/images/bv.png",
+	  	 "img": "../../css/images/samson.jpg",
 	  	 "position": ".NET",
 	  	 "project": "NAF",
 	  	 "education": "?"  ,
+	    "favorite": false
+  	},
+  	{
+	  	"uid": 8,
+	  	"name": "Nina Orucevic",
+	  	 "img": "../../css/images/nina.jpg",
+	  	 "position": "HR",
+	  	 "project": "Ansettelser i Ciber",
+	  	 "education": ""  ,
 	    "favorite": false
   }
 ]
