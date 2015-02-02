@@ -57,7 +57,7 @@
       }
     </style>
 
-      <div class="contact-header">
+      <div class="contact-header" on-tap="{{contactTapped}}">
         <content select="h2"></content>
         <content select="img"></content>
       </div>
@@ -72,9 +72,6 @@
   </template>
   <script>
   Polymer({
-    eventDelegates: {
-      down: 'contactTapped'
-    },
     publish: {
       displayDetails: {
         value: false,
