@@ -93,12 +93,10 @@
 
 			function createShadow(host){
 				var root = host.createShadowRoot();
-				console.log(host);
 				var clone = document.importNode(template.content, true);
 				root.appendChild(clone);
 
 				var opened = false;
-				console.log(root);
 
 				root.host.addEventListener("click", function(){
 					var details = root.querySelector(".detailed-info");
@@ -109,8 +107,6 @@
 	        			details.className = details.className + " hidden";
 		        	}
 		        	opened = !opened;
-
-		        	console.log(details.className + ' ' + opened);
 		        });
 			}
 		</script>

@@ -41,15 +41,15 @@
 			  {'name': 'Alexander Perry', 'img': '../../css/images/perry.png', 'position': 'Frontend / .NET', 'project': 'NAF', 'education': 'Informatikk @ NTNU'},
 			  {'name': 'Bjørn Vegard Thoresen', 'img': '../../css/images/bv.png', 'position': '.NET', 'project': '', 'education': 'HiO'}
 			];
-			var template = document.querySelector('#contact-template'),
-				contactsWrapper = document.querySelector(".contacts");
+			var template = document.querySelector('#contact-template');
+			var contactsWrapper = document.querySelector(".contacts");
 
 			for(var i = 0; i < contacts.length; i++) {
 				var clone = document.importNode(template.content, true);
-				populatedAndInstertTemplate(i, clone);
+				populatedAndInsertTemplate(i, clone);
 			}
 
-			function populatedAndInstertTemplate(i, clone){
+			function populatedAndInsertTemplate(i, clone){
 				clone.querySelector("h2").textContent = contacts[i].name;
 				clone.querySelector("img").src = contacts[i].img;
 				clone.querySelector(".position").textContent = contacts[i].position;
