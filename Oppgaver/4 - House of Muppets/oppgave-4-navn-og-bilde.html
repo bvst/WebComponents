@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Oppgave 2</title></head>
+    <body>
+
+        <!--
+            Oppgave 2:
+
+            Denne filen inneholder unødvendig repetisjon! (Vær DRY!)
+            Bruk <templeate> og createShadowRoot() til å
+            generere li-elementene fra en JavaScript-liste.
+        -->
+
+        <ul id="liste">
+            <li>
+                <section class="name-section">
+                    <header>
+                        <a href="#" onclick="sayHi(this)"><span class="navn">Morten Kjelling</span></a>
+                    </header>
+                </section>
+                <section>
+                    <main class="avatar">
+                        <img src="/assets/morten.jpg" />
+                    </main>
+                </section>
+            </li>
+            <li>
+                <section class="name-section">
+                    <header>
+                        <a href="#" onclick="sayHi(this)"><span class="navn">Bjørn Thoresen</span></a>
+                    </header>
+                </section>
+                <section>
+                    <main class="avatar">
+                        <img src="/assets/bjorn.jpg" />
+                    </main>
+                </section>
+            </li>
+            <li>
+                <section class="name-section">
+                    <header>
+                        <a href="#" onclick="sayHi(this)"><span class="navn">Yngve Svalestuen</span></a>
+                    </header>
+                </section>
+                <section>
+                    <main class="avatar">
+                        <img src="/assets/yngve.jpg" />
+                    </main>
+                </section>
+            </li>
+        </ul>
+
+        <!-- Her er en template du kan bruke. -->
+        <template id="person">
+            <li>
+                <section class="name-section">
+                    <header>
+                        <a href="#">
+                            <span class="navn">
+                                <content select="span"></content>
+                            </span>
+                        </a>
+                    </header>
+                </section>
+                <section>
+                    <main class="avatar">
+                        <content select="img"></content>
+                    </main>
+                </section>
+            </li>
+        </template>
+
+        <script>
+            // Deklarer listen over personer på denne måten:
+            var personer = [
+                {navn: 'Morten Kjelling', img: '/assets/morten.jpg'}
+                // ...
+            ];
+
+            var template = document.querySelector('#person');
+            var host = document.querySelector('#liste');
+
+            personer.forEach(function (person) {
+                var clone = document.importNode(template.content, true);
+                var shadowElement = document.createElement('span');
+                var shadow = shadowElement.createShadowRoot();
+                shadow.appendChild(clone);
+
+                // Legg inn person-elementer i host basert på templaten her.
+            });
+
+            // Extra credit: prøv å tilpasse denne funksjonen så den fungerer med shadow DOM!
+            function sayHi(element) {
+                alert('Hi, ' + element.textContent);
+            }
+        </script>
+    </body>
+</html>

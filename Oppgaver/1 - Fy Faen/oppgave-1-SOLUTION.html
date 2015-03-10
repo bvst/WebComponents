@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Oppgave 1: Banneord</title></head>
+    <body>
+        <input is="filtered-input" />
+
+        <script>
+            var proto = Object.create(HTMLInputElement.prototype);
+
+            var banneord = ['faen', 'dust', 'dumming'];
+
+            proto.createdCallback = function () {
+                this.addEventListener('input', function () {
+                    var value = this.value,
+                        found = false;
+
+                    banneord.forEach(function (ord) {
+                        if (value.indexOf(ord) > -1) found = true;
+                    })
+
+                    if (found) {
+                        this.style['background-color'] = 'red';
+                    } else {
+                        this.style['background-color'] = '';
+                    }
+                });
+            };
+
+            document.registerElement('filtered-input', {prototype: proto, extends: 'input'});
+        </script>
+    </body>
+</html>

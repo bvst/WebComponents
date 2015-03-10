@@ -1,0 +1,15 @@
+<script>
+    var proto = Object.create(HTMLElement.prototype);
+
+    proto.createdCallback = function () {
+        var img = document.createElement('img');
+        img.src = getRandomKittyUrl();
+        this.appendChild(img);
+    };
+
+    function getRandomKittyUrl() {
+        return 'http://thecatapi.com/api/images/get.php?api_key=MTAx&id=' + Math.floor(Math.random() * 500);
+    }
+
+    document.registerElement('give-me-a-kitten', {prototype: proto});
+</script>

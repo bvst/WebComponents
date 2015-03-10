@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+        <link rel="import" href="/bower_components/polymer/polymer.html">
+    </head>
+    <body>
+        <!--
+            Oppgave 5: I tilfelle uhell
+
+            Om uhellet skulle være ute ville det være nyttig å ha en oversikt
+            over mulige rømingsveier. Ta utgangspunkt i de gitte dataene og lag
+            en liste over rømningsmulighetene. Hint: <template repeat>
+        -->
+
+        <polymer-element name="escapes-app">
+            <template>
+                <template repeat="{{route in escapes}}">
+                    <template if="{{route.name}}">
+                        <h4>{{route.name}}</h4>
+                    </template>
+                    <template if="{{route.img}}">
+                        <img src="{{route.img}}" />
+                    </template>
+                    <p>Time to escape: <span>{{route.timeToEscape}}</span> seconds</p>
+                    <p>Survival rate: <span>{{route.survivalRate * 100}}</span>%</p>
+                </template>
+            </template>
+            <script>
+                Polymer({
+                    escapes: [
+                        {
+                            name: 'Trapp',
+                            timeToEscape: 97,
+                            survivalRate: 0.99
+                        },
+                        {
+                            name: 'Heis',
+                            timeToEscape: 30,
+                            survivalRate: 0.7
+                        },
+                        {
+                            name: 'Hoppe ut',
+                            timeToEscape: 0.3,
+                            survivalRate: 0.02
+                        },
+                        {
+                            img: '/assets/classic-escape.jpg',
+                            timeToEscape: 8000,
+                            survivalRate: 0.4
+                        }
+                    ]
+                });
+            </script>
+        </polymer-element>
+
+        <escapes-app></escapes-app>
+    </body>
+</html>

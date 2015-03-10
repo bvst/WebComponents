@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Oppgave 1: Banneord</title></head>
+    <body>
+        <!--
+            Oppgave 1: Banneord
+
+            Klienten "gode ord" har en online chat der de vil at alle skal
+            oppføre seg ordentlig. Derfor vil de ha et custom komponent som
+            tydelig markerer input-feltet hvis en bruker skriver inn et
+            banneord. Legg til kode i createdCallback som gjør om
+            input-elementet til dette magiske komponentet.
+        -->
+        <input />
+
+        <script>
+            var proto = Object.create(HTMLInputElement.prototype);
+
+            var banneord = ['faen', 'dust', 'dumming', 'ukristen', 'fuck', 'Evry'];
+
+            proto.createdCallback = function () {
+                // skriv kode her
+            };
+
+            document.registerElement('filtered-input', {prototype: proto, extends: 'input'});
+        </script>
+    </body>
+</html>

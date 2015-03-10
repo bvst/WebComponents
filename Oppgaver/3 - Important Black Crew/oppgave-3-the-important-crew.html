@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Oppgave 3: important</title>
+
+        <style>
+            body {
+                color: red !important; /* en eller annen dust har lagt på
+                                          important her, men du får ikke
+                                          lov til å endre på det. */
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            Oppgave 3: The More Important Black-Eyed P
+
+            Noen har ødelagt CSS-en på siden og brukt "!important"-markøren!
+            Siden du ikke jobber i Ciber har du en slem sjef som sier at du
+            ikke får endre den koden. Som en god utvikler vet du at man aldri,
+            aldri, aldri (ALDRI!!!) bruker !important, og holder deg for god
+            til dét. Gjør ferdig custom-elementet "black-eyed-p" som gjør
+            tekst svart igjen.
+        -->
+
+        <p>Jeg er rød!</p>
+
+        <!-- Lag en fin template #moreImpotant! -->
+
+        <black-eyed-p>jeg er svart</black-eyed-p>
+
+        <script>
+            var proto = Object.create(HTMLElement.prototype);
+
+            proto.createdCallback = function () {
+                var template = document.querySelector('#moreImportant');
+                var clone = document.importNode(template.content, true);
+                var shadow = this.createShadowRoot();
+                shadow.appendChild(clone);
+            };
+
+            document.registerElement('black-eyed-p', {prototype: proto});
+        </script>
+
+    </body>
+</html>
