@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Oppgave 5: I see red</title>
+
+        <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+        <link rel="import" href="/bower_components/polymer/polymer.html">
+        <link rel="import" href="./styled-text.html">
+    </head>
+    <body>
+        <!--
+            Oppgave 5: stylan on y'all
+
+            Noen proffe designere fra selskapet "Stor Stil" vil ha full kontroll
+            på stylingen av siden uten å skrive noe kode! Lag et custom element
+            "my-control" som gir brukeren av siden evnen til å stille inn teksten
+            "Gjør meg STOR og rød" til være, ja nettopp, stor og rød.
+        -->
+
+        <polymer-element name="red-app">
+            <template>
+                <styled-text styling="{{styling}}">Gjør meg STOR og rød</styled-text>
+                <my-control styling="{{styling}}"></my-control>
+            </template>
+            <script>
+                Polymer({
+                    styling: {color: 'blue', size: 12}
+                });
+            </script>
+        </polymer-element>
+
+        <red-app></red-app>
+    </body>
+</html>

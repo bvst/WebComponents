@@ -1,0 +1,30 @@
+<polymer-element name="styled-text" attributes="styling">
+    <template>
+        <style>
+            @-webkit-keyframes spin {
+                from {transform:rotate(0deg);}
+                to {transform:rotate(360deg);}
+            }
+            * [spin] {
+                -webkit-animation: spin 4s infinite linear;
+            }
+        </style>
+        <p>
+            <template if="{{styling.size == 1337}}"><img style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0;" src="/assets/rolls.jpg" /></template>
+            <template if="{{styling.size != 1337}}">
+                <span style="color: {{styling.color}}; font-size: {{styling.size}}px" spin?="{{success}}">
+                    <template if="{{styling.color === 'pink'}}">Dette er ikke My Little Pony!</template>
+                    <template if="{{success}}">Jippi</template>
+                    <template if="{{!success}}"><content></content></template>
+                </span>
+            </template>
+        </p>
+    </template>
+    <script>
+        Polymer({
+            computed: {
+                success: 'styling.color === "red" && styling.size > 24'
+            }
+        })
+    </script>
+</polymer-element>

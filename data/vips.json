@@ -1,0 +1,30 @@
+[
+    {
+        "category": "Ginger",
+        "name": "Rick \"Roll\" Astley",
+        "occupation": "Unknown",
+        "website": "http://youtu.be",
+        "bestOf": "http://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+        "category": "Lolcats",
+        "name": "Keyboard Cat",
+        "occupation": "Composer",
+        "website": "http://www.facebook.com/thekeyboardcat",
+        "bestOf": "https://www.youtube.com/embed/J---aiyznGQ"
+    },
+    {
+        "category": "Lolcats",
+        "name": "Nyan Cat",
+        "occupation": "Astronaut",
+        "website": "http://knowyourmeme.com/memes/nyan-cat-pop-tart-cat",
+        "bestOf": "https://www.youtube.com/embed/wZZ7oFKsKzY"
+    },
+    {
+        "category": "Ginger",
+        "name": "Angry Ginger",
+        "occupation": "Ginger",
+        "website": "http://anger-management.supportgroups.com/",
+        "bestOf": "https://www.youtube.com/embed/EY39fkmqKBM"
+    }
+]
