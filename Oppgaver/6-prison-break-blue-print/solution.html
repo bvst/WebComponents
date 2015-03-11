@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Prison Break Blue Print</title>
+        <title>Oppgave 6: Prison Break Blue Print</title>
 
         <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
 
@@ -9,16 +9,25 @@
     </head>
     <body>
         <!--
-            Oppgave 5: I tilfelle uhell
+            Oppgave 6: I tilfelle uhell
 
             Om uhellet skulle være ute ville det være nyttig å ha en oversikt
             over mulige rømingsveier. Ta utgangspunkt i de gitte dataene og lag
             en liste over rømningsmulighetene. Hint: <template repeat>
         -->
 
-        <polymer-element name="escapes-app">
+        <polymer-element name="escape-app">
             <template>
-                <!-- Skriv oversikten over rømningsveier her -->
+                <template repeat="{{route in escapes}}">
+                    <template if="{{route.name}}">
+                        <h4>{{route.name}}</h4>
+                    </template>
+                    <template if="{{route.img}}">
+                        <img src="{{route.img}}" />
+                    </template>
+                    <p>Time to escape: <span>{{route.timeToEscape}}</span> seconds</p>
+                    <p>Survival rate: <span>{{route.survivalRate * 100}}</span>%</p>
+                </template>
             </template>
             <script>
                 Polymer({
@@ -37,18 +46,17 @@
                             name: 'Hoppe ut',
                             timeToEscape: 0.3,
                             survivalRate: 0.02
-                        } /* Extra credit,
+                        },
                         {
                             img: '/assets/classic-escape.jpg',
                             timeToEscape: 8000,
                             survivalRate: 0.4
                         }
-                        */
                     ]
                 });
             </script>
         </polymer-element>
 
-        <escapes-app></escapes-app>
+        <escape-app></escape-app>
     </body>
 </html>

@@ -1,0 +1,22 @@
+<polymer-element name="shuffle-input" attributes="inputValue shuffledValue">
+    <template>
+        <input value="{{inputValue}}" />
+    </template>
+    <script>
+        Polymer({
+            inputValueChanged: function () {
+                var shuffled = [],
+                    text = this.inputValue.split(' ');
+
+                while (text.length > 0) {
+                    var i = ~~(Math.random() * text.length),
+                        c = text.splice(i, 1);
+
+                    shuffled.push(c);
+                }
+
+                this.shuffledValue = shuffled.join(' ');
+            }
+        });
+    </script>
+</polymer-element>

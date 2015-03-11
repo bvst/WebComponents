@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Oppgave 8: z</title>
+
+        <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+        <link rel="import" href="/bower_components/polymer/polymer.html">
+        <link rel="import" href="./shuffle-input.html">
+    </head>
+    <body>
+        
+        <polymer-element name="app-8" noscript>
+            <template>
+                <p><shuffle-input inputValue="{{value}}" shuffledValue="{{shuffled}}"></shuffled-input></p>
+
+                <p><span>Shuffled: </span><span>{{shuffled}}</span></p>
+            </template>
+        </polymer-element>
+
+        <app-8></app-8>
+    </body>
+</html>

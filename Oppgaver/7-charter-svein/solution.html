@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oppgave 7: Kjendiser</title>
+
+    <script src="/bower_components/webcomponentsjs/webcomponents.js"></script>
+
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/bower_components/core-ajax/core-ajax.html">
+</head>
+<body>
+    <!--
+        Oppgave 7: kjendismania
+
+        Du har blitt leid inn til å lage en oversikt over populære internett-
+        karakterer. Listen skal basere seg på data hentet fra URL-en
+        "http://ciber-norge.github.io/data/vips.json". Bruk det du har lært
+        om Polymer til å presentere listen ved hjelp av template-repeat. Du kan
+        bruke elementet "core-ajax" til å hente informasjonen til en variabel.
+
+        Extra credit: Vis video
+        Even more credit: Filtrér listn med et input-felt.
+    -->
+
+    <polymer-element name="click-frame" attributes="showLabel hideLabel">
+        <template>
+            <template if="{{!opened}}">
+                <a href="#" on-click="{{open}}">{{showLabel}}</a>
+            </template>
+            <template if="{{opened}}">
+                <content></content>
+                <a href="#" on-click="{{hide}}">{{hideLabel}}</a>
+            </template>
+        </template>
+        <script>
+            Polymer({
+                opened: false,
+                open: function () { this.opened = true; },
+                hide: function () { this.opened = false; }
+            });
+        </script>
+    </polymer-element>
+
+    <polymer-element name="kjendis-app">
+        <template>
+            <template if="{{!data}}"><span>Laster...</span></template>
+            <p><input type="search" value="{{filterString}}" placeholder="Filter..." /></p>
+            <table>
+                <thead>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Occupation</th>
+                    <th>Website</th>
+                    <th>Best of</th>
+                </thead>
+                <tbody>
+                    <template repeat="{{x in data | filter(filterString)}}">
+                        <tr>
+                            <td>{{x.category}}</td>
+                            <td>{{x.name}}</td>
+                            <td>{{x.occupation}}</td>
+                            <td><a href="{{x.website}}">Website</a></td>
+                            <td>
+                                <click-frame showLabel="Click to open" hideLabel="Hide the abomination!">
+                                    <iframe src="{{x.bestOf}}"></iframe>
+                                </click-frame>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <core-ajax auto response="{{data}}" url="http://ciber-norge.github.io/data/vips.json"></core-ajax>
+        </template>
+        <script>
+            Polymer({
+                filter: function (data, str) {
+                    if (!str) return data;
+
+                    return data.filter(function (model) {
+                        return model.name.toLowerCase().indexOf(str) > -1 ||
+                                model.category.toLowerCase().indexOf(str) > -1 ||
+                                model.occupation.toLowerCase().indexOf(str) > -1;
+                    });
+                }
+            });
+        </script>
+    </polymer-element>
+
+    <kjendis-app></kjendis-app>
+</body>
+</html>
